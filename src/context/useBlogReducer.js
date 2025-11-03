@@ -21,6 +21,21 @@ const reducer = (state, action) => {
           },
         ],
       };
+    case ACTION_TYPES.EDIT_BLOG_POST:
+      return {
+        ...state,
+        blogPosts: state.blogPosts.map((post) => {
+          if (post.id === action.payload.id) {
+            return {
+              ...post,
+              id: action.payload.id,
+              title: action.payload.title,
+              content: action.payload.content,
+            };
+          }
+          return post;
+        }),
+      };
     case ACTION_TYPES.DELETE_BLOG_POST:
       return {
         ...state,

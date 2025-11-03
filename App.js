@@ -2,11 +2,13 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { BlogProvider } from "./src/context/BlogContext";
+import { TouchableOpacity } from "react-native";
+import { Feather } from "@expo/vector-icons";
+
 import IndexScreen from "./src/screens/IndexScreen";
 import ShowScreen from "./src/screens/ShowScreen";
 import CreateScreen from "./src/screens/CreateScreen";
-import { TouchableOpacity } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import EditScreen from "./src/screens/EditScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,12 +32,28 @@ export default function App() {
           <Stack.Screen
             name="Show"
             component={ShowScreen}
-            options={{ title: "Blog Details" }}
+            options={({ route, navigation }) => ({
+              title: "Blog Details",
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("Edit", { id: route.params.id })
+                  }
+                >
+                  <Feather name="edit" size={24} style={{ marginRight: 15 }} />
+                </TouchableOpacity>
+              ),
+            })}
           />
           <Stack.Screen
             name="Create"
             component={CreateScreen}
             options={{ title: "Nuevo Post" }}
+          />
+          <Stack.Screen
+            name="Edit"
+            component={EditScreen}
+            options={{ title: "Edit Post" }}
           />
         </Stack.Navigator>
       </NavigationContainer>
