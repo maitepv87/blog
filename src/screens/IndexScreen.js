@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  Button,
   TouchableOpacity,
 } from "react-native";
 import { useBlogContext } from "../context/BlogContext";
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
     borderColor: "gray",
   },
   icon: {
-    size: 24,
+    fontSize: 20,
     color: "red",
   },
   title: {
