@@ -10,7 +10,8 @@ const ShowScreen = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Detalles del post con ID: {blogPost.title}</Text>
+      <Text style={styles.title}>{blogPost.title}</Text>
+      <Text style={styles.content}>{blogPost.content}</Text>
     </View>
   );
 };
@@ -18,11 +19,21 @@ const ShowScreen = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    padding: 24,
+    backgroundColor: "#fdfdfd",
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 12,
+    color: "#333",
+    textAlign: "center",
+  },
+  content: {
+    fontSize: 18,
+    lineHeight: 26,
+    color: "#555",
+    textAlign: "left",
   },
 });
 

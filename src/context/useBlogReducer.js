@@ -15,8 +15,9 @@ const reducer = (state, action) => {
         blogPosts: [
           ...state.blogPosts,
           {
-            id: Math.floor(Math.random() * 99999),
-            title: `Blog Post #${state.blogPosts.length + 1}`,
+            id: Date.now(),
+            title: action.payload.title,
+            content: action.payload.content,
           },
         ],
       };
